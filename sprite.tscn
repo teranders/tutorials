@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://03_pig.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Sprite
+
+func _ready():
+	print(get_name() +\" is ready!\")"
+
+[node name="Sprite" type="Sprite"]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+script = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+

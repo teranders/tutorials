@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+func _ready():
+	var s = load(\"res://sprite.tscn\").instance()
+	s.connect(\"tree_entered\", self, \"_child_entered\", [s])
+	s.connect(\"tree_exited\", self, \"_child_exited\", [s])
+	
+	s.set_position(OS.window_size/2)
+	add_child(s)
+	
+	var t = Timer.new()
+	add_child(t)
+	
+	t.start()
+	
+	yield(t, \"timeout\")
+	s.set_texture(load(\"res://01_positive_pig.png\"))
+	
+	t.start()
+	yield(t, \"timeout\")
+	s.queue_free()
+	
+func _child_entered(child):
+	print(child.get_name() +\" entered the tree\")
+	
+func _child_exited(child):
+	print(child.get_name() +\" exited the tree\")"
+
+[node name="EnterExit" type="Node"]
+
+script = SubResource( 1 )
+
+
