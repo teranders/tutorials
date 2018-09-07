@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://actor/player/player_actor.gd" type="Script" id=1]
+[ext_resource path="res://actor/player/states/state_machine.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 32 )
+
+[sub_resource type="GDScript" id=2]
+
+resource_name = "pass_through"
+script/source = "extends Area2D
+
+func _on_pass_through_body_exited(body):
+	if body.get_collision_layer_bit(1) and not get_parent().get_collision_mask_bit(1):
+		get_parent().set_collision_mask_bit(1, true)
+"
+
+[node name="actor" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+GRAVITY = 50
+FLOOR_NORMAL = Vector2( 0, -1 )
+SLOPE_STOP_SPEED = 200
+SLOPE_MAX_DEGREE = 46
+FALL_THRESHOLD = 100
+left = "left_1"
+right = "right_1"
+up = "up_1"
+down = "down_1"
+jump = "jump_1"
+
+[node name="shape" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0, -32 )
+shape = SubResource( 1 )
+
+[node name="pass_through" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+script = SubResource( 2 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="shape" type="CollisionShape2D" parent="pass_through" index="0"]
+
+position = Vector2( 0, -32 )
+shape = SubResource( 1 )
+
+[node name="state_machine" parent="." index="2" instance=ExtResource( 2 )]
+
+[connection signal="body_exited" from="pass_through" to="pass_through" method="_on_pass_through_body_exited"]
+
+

@@ -1,7 +1,7 @@
 # Repository for keep video tutorial files
-![Pigdev Patreon Logo](https://i.imgur.com/knwqY59.png)
+![Pigdev Patreon Logo](https://i.imgur.com/K7a3KBE.png)
 
-## [Scene Tree](https://github.com/pigdevstudio/videos/tree/master/scene_tree)
+## [Scene Tree](https://www.youtube.com/watch?v=3SicNYW02eI)
 
 Video in which we talked about some tips regarding to Godot's SceneTree system, which includes:
 
@@ -11,7 +11,7 @@ Video in which we talked about some tips regarding to Godot's SceneTree system, 
 4. **Changing** between scenes and **reloading** the current scene
 5. Handling **Groups** with the SceneTree singleton
 
-## [Fux Design](https://github.com/pigdevstudio/videos/tree/master/fux_design)
+## [Fux Design](https://www.youtube.com/watch?v=3Auh_nUF_1E)
 
 Video in which we talked about how to use basic shapes in Inkscape to design a cute fox based on Fux design
 
@@ -23,7 +23,7 @@ Video in which we talked about how to use basic shapes in Inkscape to design a c
 * Circles for the Eyes and Tail
   - Difference and Intersection operations for the Tail
 
-## [Principles of Logic](https://github.com/pigdevstudio/videos/tree/master/logic_basics)
+## [Principles of Logic](https://www.youtube.com/watch?v=t-9Pnu0o_Xo)
 
 This is an introduction to the very foundations of language. We used the three laws of thinking:
 
